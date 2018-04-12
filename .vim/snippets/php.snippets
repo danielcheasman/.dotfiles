@@ -1,0 +1,50 @@
+snippet pm
+	public function ${1}()
+	{
+		${2}
+	}
+snippet ldm
+	<?php
+
+	use Illuminate\Support\Facades\Schema;
+	use Illuminate\Database\Schema\Blueprint;
+	use Illuminate\Database\Migrations\Migration;
+	
+	class ${1:className} extends Migration
+	{
+	    /**
+	     * Run the migrations.
+	     *
+	     * @return void
+	     */
+	    public function up()
+	    {
+	        Schema::create('${2:tableName}', function (Blueprint $table) {
+				${3}
+	        });
+	    }
+	
+	    /**
+	     * Reverse the migrations.
+	     *
+	     * @return void
+	     */
+	    public function down()
+	    {
+	        Schema::dropIfExists('$2');
+	    }
+	}
+
+snippet lm
+	<?php
+
+	use Illuminate\Database\Eloquent\Model;
+
+	class ${1:ModelName} extends Model
+	{
+		protected $fillable = [${2}];
+
+		public $incrementing = false;
+
+		${3}
+	}
