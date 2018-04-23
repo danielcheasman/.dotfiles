@@ -1,7 +1,8 @@
 set nocompatible							"be iMproved, required
 set hidden
 set showtabline=0
-
+set noswapfile
+set nobackup
 
 so ~/.vim/plugins.vim
 
@@ -13,7 +14,7 @@ set termguicolors
 set t_CO=256								"Use 256 colors. This is useful for Terminal Vim.
 set guifont=Fira_Code:h13						"Set the default font family and size.
 set linespace=9   						        "Macvim-specific line-height.
-
+let NERDTreeDirArrows = 1
 set noshowmode
 set noshowcmd
 set noruler
@@ -25,12 +26,18 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 
+set nowrap
+set backspace=indent,eol,start
 
 set autoindent
+set copyindent
 
 " If you want 4-space tabs:
+set smartindent
 set tabstop=4
-set shiftwidth=0
+set shiftwidth=4
+set expandtab
+set smarttab
 
 
 set backspace=indent,eol,start                                          "Make backspace behave like every other editor.
@@ -87,6 +94,9 @@ nmap <Leader>es :e ~/.vim/snippets/php.snippets<cr>
 " Delete the current buffer.
 nmap <Leader>q :bd<cr>
 
+" Save file shortcuts
+nmap <Leader>s :w
+
 "Add simple highlight removal.
 nmap <Leader><space> :nohlsearch<cr>
 
@@ -94,6 +104,22 @@ nmap <Leader><space> :nohlsearch<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 
 inoremap jj <Esc>
+
+noremap H ^
+noremap L $
+vnoremap L g_
+
+nmap <leader>a :bnext<CR>
+nmap <leader>z :bprevious<CR>
+
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8
+endif
+
+set display+=lastline
+
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 "-------------Auto-Commands--------------"
 
